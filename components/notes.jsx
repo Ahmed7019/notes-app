@@ -1,5 +1,12 @@
 import { fetchAllNotes } from "@/lib/notes";
-import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "./ui/card";
+import { Edit } from "lucide-react";
 
 export const revalidate = 10;
 
@@ -10,7 +17,7 @@ async function Notes() {
     <>
       <div className="grid grid-cols-4 gap-2">
         {notes.map((note) => (
-          <Card key={note.title} className={"max-w-xs"}>
+          <Card key={note.title} className={"max-w-xs hover:ring"}>
             <CardHeader>
               <CardTitle className="font-semibold text-sm">
                 {note.title}
@@ -23,6 +30,12 @@ async function Notes() {
                   : note.text}
               </p>
             </CardContent>
+            <CardFooter className={"flex "}>
+              <p className="text-neutral-400 text-xs flex items-center justify-center gap-1">
+                <Edit className="w-4 h-4 text-black" />
+                {Date(note.createdAt).slice(0, 7)}
+              </p>
+            </CardFooter>
           </Card>
         ))}
       </div>
