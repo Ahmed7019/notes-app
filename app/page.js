@@ -14,22 +14,27 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { PlusIcon } from "lucide-react";
+
+import { submitNoteToDatabase } from "@/actions/actions";
+
+export const revalidate = 10;
+
 export default function Home() {
   return (
-    <main className="flex justify-between my-8 gap-2 items-center sm:w-[900px] ">
-      <div className="flex-grow flex-8/12 flex justify-center">
+    <main className="flex justify-between my-8 gap-2  sm:w-[900px]">
+      <div className="flex-grow flex-8/12">
         <Notes />
       </div>
 
       <div>
         <Dialog>
-          <form>
-            <DialogTrigger asChild>
-              <Button variant="outline">
-                Add new note <PlusIcon />
-              </Button>
-            </DialogTrigger>
-            <DialogContent className="sm:max-w-[425px]">
+          <DialogTrigger asChild>
+            <Button variant="outline">
+              Add new note <PlusIcon />
+            </Button>
+          </DialogTrigger>
+          <DialogContent className="sm:max-w-[425px]">
+            <form action={submitNoteToDatabase}>
               <DialogHeader>
                 <DialogTitle>Add a note</DialogTitle>
                 <DialogDescription>
@@ -54,10 +59,12 @@ export default function Home() {
                 <DialogClose asChild>
                   <Button variant="outline">Cancel</Button>
                 </DialogClose>
-                <Button type="submit">Save changes</Button>
+                <Button type="submit" className={"cursor-pointer"}>
+                  Save changes
+                </Button>
               </DialogFooter>
-            </DialogContent>
-          </form>
+            </form>
+          </DialogContent>
         </Dialog>
       </div>
     </main>
