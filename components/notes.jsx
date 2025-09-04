@@ -17,13 +17,13 @@ async function Notes() {
     <>
       <div className="grid grid-cols-4 gap-2">
         {notes.map((note) => (
-          <Card key={note.title} className={"max-w-xs hover:ring"}>
+          <Card key={note._id} className={"max-w-xs hover:ring bg-yellow-50"}>
             <CardHeader>
-              <CardTitle className="font-semibold text-sm">
+              <CardTitle className="font-semibold text-lg">
                 {note.title}
               </CardTitle>
             </CardHeader>
-            <CardContent className={"text-xs text-accent-foreground"}>
+            <CardContent className={"text-sm text-accent-foreground"}>
               <p>
                 {note.text.length >= 20
                   ? note.text.slice(0, 20) + "..."
@@ -31,10 +31,9 @@ async function Notes() {
               </p>
             </CardContent>
             <CardFooter className={"flex "}>
-              <p className="text-neutral-400 text-xs flex items-center justify-center gap-1">
+              {/* <p className="text-neutral-400 text-xs flex items-center justify-center gap-1">
                 <Edit className="w-4 h-4 text-black" />
-                {Date(note.createdAt).slice(0, 7)}
-              </p>
+              </p> */}
             </CardFooter>
           </Card>
         ))}

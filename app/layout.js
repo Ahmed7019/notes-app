@@ -1,4 +1,4 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Indie_Flower } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/navbar";
 import { Toaster } from "sonner";
@@ -9,6 +9,11 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
+const caveat = Indie_Flower({
+  variable: "--font-caveat",
+  subsets: ["latin"],
+  weight: ["400"],
+});
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
@@ -23,7 +28,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col items-center justify-center`}
+        className={`${geistSans.variable} ${geistMono.variable} ${caveat.className} antialiased flex flex-col items-center justify-center`}
       >
         <Navigation />
         {children}

@@ -16,6 +16,7 @@ import { Input } from "@/components/ui/input";
 import { submitNoteToDatabase } from "@/actions/actions";
 
 import { PlusIcon } from "lucide-react";
+import { Textarea } from "./ui/textarea";
 
 function AddNewNote() {
   return (
@@ -45,7 +46,7 @@ function AddNewNote() {
               </div>
               <div className="grid gap-3">
                 <Label htmlFor="text-1">Text</Label>
-                <Input id="text-1" name="text" defaultValue="my new note" />
+                <Textarea id="text-1" name="text" placeholder="my new note" />
               </div>
             </div>
             <DialogFooter className={"mt-4"}>
