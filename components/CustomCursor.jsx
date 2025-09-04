@@ -9,12 +9,11 @@ export default function CustomCursor() {
       id="cursor"
       className="
         fixed top-0 left-0 w-4 h-4 
-        bg-orange-500 rounded
-        
+        bg-neutral-800
+        rounded-full
         pointer-events-none 
-        transform -translate-x-1/2 -translate-y-1/2 skew-x-12
-        shadow-lg
-        transition-transform duration-75 ease-linear
+        transform -translate-x-1/2 -translate-y-1/2 
+        transition-transform duration-[40ms] ease-linear
         z-[9999]
         hover:w-3
       "
