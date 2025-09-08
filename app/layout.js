@@ -28,7 +28,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${caveat.className} antialiased flex flex-col items-center justify-center`}
+        className={`bg-neutral-100/80 ${geistSans.variable} ${geistMono.variable} ${caveat.className} antialiased flex flex-col items-center justify-center`}
       >
         <Navigation />
         {children}
