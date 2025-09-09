@@ -3,6 +3,7 @@ import Notes from "@/components/notes";
 import AddNewNote from "@/components/addNewNote";
 import Collections from "@/components/Collections";
 import { fetchAllNotes } from "@/lib/notes";
+import AddNewCollection from "@/components/addNewCollection";
 
 export const revalidate = 10;
 
@@ -16,7 +17,12 @@ export default async function Home() {
         </div>
         <AddNewNote />
       </div>
-      <Collections />
+      <div className="flex justify-between gap-2 ">
+        <div>
+          <Collections />
+        </div>
+        <AddNewCollection />
+      </div>
     </main>
   );
 }

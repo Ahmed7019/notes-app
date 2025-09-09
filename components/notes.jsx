@@ -16,6 +16,7 @@ import { Textarea } from "./ui/textarea";
 import { Button } from "./ui/button";
 import { useTransition } from "react";
 import { updateNoteAction } from "@/actions/actions";
+import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 
 function Notes({ notes }) {
   const [isPending, startTransition] = useTransition();
@@ -47,6 +48,31 @@ function Notes({ notes }) {
                 <DialogTitle>{note.title}</DialogTitle>
               </DialogHeader>
               <div className="flex justify-center items-center">
+                <div
+                  className="absolute top-4 right-4"
+                  aria-description="settings-of-note"
+                  title="options"
+                >
+                  <Popover>
+                    <PopoverTrigger asChild>
+                      <Button variant={"outline"} className={"text-black"}>
+                        ...
+                      </Button>
+                    </PopoverTrigger>
+                    <PopoverContent className={"z-100"}>
+                      <div className="flex flex-col items-center gap-2">
+                        <Button>Add to collection</Button>
+                        <Button
+                          className={
+                            "text-red-500 bg-accent hover:bg-neutral-200 border shadow-inner"
+                          }
+                        >
+                          Delete
+                        </Button>
+                      </div>
+                    </PopoverContent>
+                  </Popover>
+                </div>
                 <form
                   action={async (formData) => {
                     startTransition(() => updateNoteAction(formData));
@@ -79,11 +105,6 @@ function Notes({ notes }) {
                     </div>
                   </div>
                   <DialogFooter className="flex w-full justify-end">
-                    <DialogClose className="absolute top-4 right-4" asChild>
-                      <Button variant={"outline"} className={"text-black"}>
-                        X
-                      </Button>
-                    </DialogClose>
                     <Button
                       className={"justify-end"}
                       type="submit"
