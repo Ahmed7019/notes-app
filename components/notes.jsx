@@ -14,10 +14,11 @@ import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { Textarea } from "./ui/textarea";
 import { Button } from "./ui/button";
-import { useState } from "react";
+import { useTransition } from "react";
+import { updateNoteAction } from "@/actions/actions";
 
 function Notes({ notes }) {
-  const [updating, setUpdating] = useState(false);
+  const [isPending, startTransition] = useTransition();
 
   if (!notes || notes.length === 0) return <p>No notes to show </p>;
   return (
@@ -46,7 +47,13 @@ function Notes({ notes }) {
                 <DialogTitle>{note.title}</DialogTitle>
               </DialogHeader>
               <div className="flex justify-center items-center">
-                <form className="flex flex-col gap-8">
+                <form
+                  action={async (formData) => {
+                    startTransition(() => updateNoteAction(formData));
+                  }}
+                  className="flex flex-col gap-8"
+                >
+                  <input type="hidden" name="id" value={note._id.toString()} />
                   <div className="grid gap-4">
                     <div className="grid gap-3">
                       <Label htmlFor="name-1">Title</Label>
@@ -68,7 +75,6 @@ function Notes({ notes }) {
                         className={
                           "min-h-80 w-[700px] border-none focus-visible:ring-0 shadow"
                         }
-                        onChange={() => setUpdating(true)}
                       />
                     </div>
                   </div>
@@ -81,9 +87,9 @@ function Notes({ notes }) {
                     <Button
                       className={"justify-end"}
                       type="submit"
-                      disabled={!updating}
+                      disabled={isPending}
                     >
-                      Save
+                      {isPending ? "Saving..." : "Save"}
                     </Button>
                   </DialogFooter>
                 </form>
