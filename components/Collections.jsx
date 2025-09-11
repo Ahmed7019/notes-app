@@ -11,7 +11,7 @@ async function Collections() {
         {collections.map((collection) => (
           <div
             key={collection._id}
-            className={`relative before:w-16 before:h-6 before:bg-yellow-100 before:-z-50 before:border before:border-yellow-300 before:rounded-r-4xl before:rounded-l-md before:-top-3 before:left-0 before:absolute bg-yellow-200 w-40 h-30 rounded-b-4xl rounded-tr-[60%] border border-yellow-300 shadow`}
+            className={`cursor-pointer hover:before:bg-yellow-200/80 relative before:w-16 before:h-6 before:bg-yellow-100 before:-z-50 before:border before:border-yellow-300 before:rounded-r-4xl before:rounded-l-md before:-top-3 before:left-0 before:absolute bg-yellow-200 w-40 h-30 rounded-b-4xl rounded-tr-[60%] border border-yellow-300 shadow`}
           >
             <div className="bg-white w-15 rotate-x-20 h-20 border rounded shadow absolute top-5 left-2  "></div>
             <div className="bg-white w-15 rotate-x-20 h-20 border rounded shadow absolute top-6 left-6  rotate-6"></div>

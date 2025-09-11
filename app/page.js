@@ -5,7 +5,7 @@ import Collections from "@/components/Collections";
 import { fetchAllNotes } from "@/lib/notes";
 import AddNewCollection from "@/components/addNewCollection";
 
-export const revalidate = 10;
+export const revalidate = 60; // Revalidate every 60 second
 
 export default async function Home() {
   const notes = await fetchAllNotes();
