@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Dialog,
   DialogClose,
@@ -15,6 +17,7 @@ import { Input } from "@/components/ui/input";
 
 import { PlusIcon } from "lucide-react";
 import { Textarea } from "./ui/textarea";
+import { createCollectionAction } from "@/actions/actions";
 
 function AddNewCollection() {
   return (
@@ -32,16 +35,16 @@ function AddNewCollection() {
               A collection is where you can add multiple notes to the same group
             </DialogDescription>
           </DialogHeader>
-          <form>
+          <form action={createCollectionAction}>
             <div className="grid gap-4">
               <div className="grid gap-3">
-                <Label htmlFor="name-1">Title</Label>
-                <Input id="title-1" name="title" defaultValue="new note..." />
+                <Label htmlFor="title">Title</Label>
+                <Input id="title" name="title" defaultValue="new note..." />
               </div>
               <div className="grid gap-3">
-                <Label htmlFor="collection-description">Description</Label>
+                <Label htmlFor="description">Description</Label>
                 <Textarea
-                  id="collection-description"
+                  id="description"
                   name="description"
                   placeholder="what about this description"
                 />

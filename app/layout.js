@@ -9,10 +9,12 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
-const caveat = Indie_Flower({
-  variable: "--font-caveat",
+const indie_Flower = Indie_Flower({
+  variable: "--font-indie-flower",
   subsets: ["latin"],
-  weight: ["400"],
+  style: "normal",
+  display: "fallback",
+  weight: "400",
 });
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -28,7 +30,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`bg-neutral-100/80 ${geistSans.variable} ${geistMono.variable} ${caveat.className} antialiased flex flex-col items-center justify-center`}
+        className={`bg-neutral-100/80 ${geistSans.variable} ${geistMono.variable} ${indie_Flower.className} antialiased flex flex-col items-center justify-center`}
       >
         <Navigation />
         {children}

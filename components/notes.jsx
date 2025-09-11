@@ -99,7 +99,7 @@ function Notes({ notes }) {
                         name="text"
                         defaultValue={note.text}
                         className={
-                          "min-h-80 w-[700px] border-none focus-visible:ring-0 shadow"
+                          "min-h-80 w-[700px] border-none focus-visible:ring-0 shadow leading-relaxed font-semibold text-lg"
                         }
                       />
                     </div>
