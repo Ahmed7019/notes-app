@@ -5,11 +5,11 @@ import {
   DialogTrigger,
   DialogTitle,
   DialogHeader,
+  DialogDescription,
 } from "./ui/dialog";
 
 async function Collections() {
   const collections = await fetchAllCollections();
-  console.log(collections);
   if (!collections || collections.length === 0)
     return <p>No collections added yet :(</p>;
   return (
@@ -41,21 +41,24 @@ async function Collections() {
                 </div>
               </div>
             </DialogTrigger>
-
-            <DialogContent className="flex justify-center z-100  bg-neutral-50 p-8 shadow-2xl border rounded-lg">
-              <div className=" sm:w-[900px] max-h-screen flex flex-col items-center justify-center">
-                <DialogHeader className={"flex items-center mb-4"}>
-                  <DialogTitle>{collection.title}</DialogTitle>
-                </DialogHeader>
-                <div className="grid grid-cols-4 gap-4 items-center">
-                  {Array.from({ length: 10 }).map((ele) => (
-                    <div
-                      key={ele}
-                      className="w-40 h-40 rounded-lg bg-blue-100 border drop-shadow-lg"
-                    ></div>
-                  ))}
-                </div>
+            <DialogContent className=" !max-w-[80rem] !max-h-[90vh] bg-neutral-50  overflow-y-auto">
+              {/* <div className="flex flex-col items-center justify-center"> */}
+              <DialogHeader className={" mb-4"}>
+                <DialogTitle>{collection.title}</DialogTitle>
+                <DialogDescription>{collection.description}</DialogDescription>
+              </DialogHeader>
+              <div className="grid grid-cols-4 gap-4 items-center">
+                {Array.from([
+                  1, 2, 3, 4, 5, 6, 7, 8, 9, 811, 23, 345, 657, 80, 12, 34, 45,
+                  56, 67, 78, 89, 98, 87, 76, 65, 54, 43, 32, 21,
+                ]).map((ele) => (
+                  <div
+                    key={ele}
+                    className="w-52 h-40 rounded-md bg-green-100 border shadow"
+                  ></div>
+                ))}
               </div>
+              {/* </div> */}
             </DialogContent>
           </Dialog>
         ))}

@@ -43,7 +43,7 @@ function Notes({ notes }) {
                 </CardContent>
               </Card>
             </DialogTrigger>
-            <DialogContent className="sm:w-[800px] z-100 absolute left-[25%] top-[20%]  bg-neutral-50 p-8 shadow-2xl border rounded-lg max-h-screen scroll-mr-8 scroll-rounded overflow-y-scroll">
+            <DialogContent className="sm:w-[800px] z-100 absolute left-[25%] top-[20%]  bg-neutral-50 p-8 shadow-2xl border rounded-lg max-h-screen scroll-mr-8  overflow-y-auto">
               <DialogHeader className={"flex items-center mb-4"}>
                 <DialogTitle>{note.title}</DialogTitle>
               </DialogHeader>
