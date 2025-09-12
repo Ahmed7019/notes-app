@@ -3,6 +3,7 @@
 import { createCollection } from "@/lib/collections";
 import { addNote } from "@/lib/notes";
 import Note from "@/models/Note";
+import { revalidatePath } from "next/cache";
 
 export async function submitNoteToDatabase(formData) {
   const title = formData.get("title");
@@ -22,6 +23,7 @@ export async function updateNoteAction(formData) {
   const text = formData.get("text");
   try {
     await Note.findByIdAndUpdate(id, { title, text });
+    revalidatePath("/");
   } catch (error) {
     throw new Error(error);
   }

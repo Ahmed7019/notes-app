@@ -47,6 +47,8 @@ function Notes({ notes }) {
               <DialogHeader className={"flex items-center mb-4"}>
                 <DialogTitle>{note.title}</DialogTitle>
               </DialogHeader>
+
+              {/* This is the popover settings button for the notes */}
               <div className="flex justify-center items-center">
                 <div
                   className="absolute top-4 right-4"
@@ -73,6 +75,7 @@ function Notes({ notes }) {
                     </PopoverContent>
                   </Popover>
                 </div>
+
                 <form
                   action={async (formData) => {
                     startTransition(() => updateNoteAction(formData));
