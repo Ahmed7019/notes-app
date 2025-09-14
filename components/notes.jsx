@@ -28,7 +28,11 @@ function Notes({ notes }) {
         {notes.map((note) => (
           <Dialog key={note._id}>
             <DialogTrigger asChild>
-              <Card className={"max-w-xs hover:ring bg-yellow-50"}>
+              <Card
+                className={
+                  "max-w-xs hover:ring hover:ring-yellow-900 bg-yellow-50"
+                }
+              >
                 <CardHeader>
                   <CardTitle className="font-semibold text-lg">
                     {note.title}
