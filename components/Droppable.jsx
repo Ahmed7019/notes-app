@@ -1,19 +1,15 @@
+"use client";
 import { useDroppable } from "@dnd-kit/core";
 
-export function Droppable(props) {
+export function Droppable({ id, children, type = "collection" }) {
   const { isOver, setNodeRef } = useDroppable({
-    id: "droppable",
-    data: {
-      type: "type1",
-    },
+    id,
+    data: { type }, // pass context, e.g. "collection"
   });
-  const style = {
-    color: isOver ? "green" : undefined,
-  };
 
   return (
-    <div ref={setNodeRef} style={style}>
-      {props.children}
+    <div ref={setNodeRef} className={`transition  ${isOver ? "" : ""}`}>
+      {children}
     </div>
   );
 }

@@ -3,7 +3,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import {
   Dialog,
-  DialogClose,
   DialogFooter,
   DialogHeader,
   DialogTitle,
@@ -17,7 +16,6 @@ import { Button } from "./ui/button";
 import { useTransition } from "react";
 import { updateNoteAction } from "@/actions/actions";
 import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
-import { DndContext } from "@dnd-kit/core";
 import { Draggable } from "./Draggable";
 
 function Notes({ notes }) {
@@ -26,31 +24,29 @@ function Notes({ notes }) {
   if (!notes || notes.length === 0) return <p>No notes to show </p>;
   return (
     <>
-      <DndContext>
-        <div className="grid grid-cols-4 gap-2">
-          {notes.map((note) => (
-            <Dialog key={note._id}>
+      <div className="grid grid-cols-4 gap-2">
+        {notes.map((note) => (
+          <Draggable key={note._id} id={note._id}>
+            <Dialog>
               <DialogTrigger asChild>
-                <Draggable id={note._id}>
-                  <Card
-                    className={
-                      "max-w-xs hover:ring hover:ring-yellow-900 bg-yellow-50"
-                    }
-                  >
-                    <CardHeader>
-                      <CardTitle className="font-semibold text-lg">
-                        {note.title}
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent className={"text-sm text-accent-foreground"}>
-                      <p>
-                        {note.text.length >= 20
-                          ? note.text.slice(0, 20) + "..."
-                          : note.text}
-                      </p>
-                    </CardContent>
-                  </Card>
-                </Draggable>
+                <Card
+                  className={
+                    "max-w-xs hover:ring hover:ring-yellow-900 bg-yellow-50"
+                  }
+                >
+                  <CardHeader>
+                    <CardTitle className="font-semibold text-lg">
+                      {note.title}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className={"text-sm text-accent-foreground"}>
+                    <p>
+                      {note.text.length >= 20
+                        ? note.text.slice(0, 20) + "..."
+                        : note.text}
+                    </p>
+                  </CardContent>
+                </Card>
               </DialogTrigger>
               <DialogContent className="sm:w-[800px] z-100 absolute left-[25%] top-[20%]  bg-neutral-50 p-8 shadow-2xl border rounded-lg max-h-screen scroll-mr-8  overflow-y-auto">
                 <DialogHeader className={"flex items-center mb-4"}>
@@ -133,12 +129,9 @@ function Notes({ notes }) {
                 </div>
               </DialogContent>
             </Dialog>
-          ))}
-        </div>
-        {/* <Draggable>
-          <div>I'm draggable</div>
-        </Draggable> */}
-      </DndContext>
+          </Draggable>
+        ))}
+      </div>
     </>
   );
 }
