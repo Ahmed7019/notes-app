@@ -9,8 +9,7 @@ import {
   DialogDescription,
 } from "./ui/dialog";
 import { Droppable } from "./Droppable";
-import Notes from "./notes";
-
+import CollectionNote from "./CollectionNote";
 function Collections({ collections, notes, setNotes }) {
   const handleDragEnd = (event) => {
     const { isOver, active, over } = event;
@@ -72,7 +71,7 @@ function Collection({ collection }) {
           <DialogTitle>{collection.title}</DialogTitle>
           <DialogDescription>{collection.description}</DialogDescription>
         </DialogHeader>
-        <Notes notes={collection.notes} />
+        <CollectionNote notes={collection.notes} />
       </DialogContent>
     </Dialog>
   );

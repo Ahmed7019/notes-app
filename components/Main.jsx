@@ -4,28 +4,26 @@ import AddNewNote from "@/components/addNewNote";
 import Collections from "@/components/Collections";
 import AddNewCollection from "@/components/addNewCollection";
 import { DndContext } from "@dnd-kit/core";
-import Collection from "@/models/Collection";
-import dbConnect from "@/lib/mongodb";
 import { addNoteToCollection } from "@/actions/updateCollection";
 import { toast } from "sonner";
+
 export default function Main({ notes, collections }) {
   async function handleDragEnd(event) {
     const { active, over } = event;
-    // active.data.current?.type === "note" && console.log(active);
-    console.log("active : ", active);
-    console.log("over : ", over);
-    if (active && over) {
-      if (
-        active.data.current?.type === "note" &&
-        over.data.current?.type === "collection"
-      ) {
-        try {
+
+    try {
+      if (active && over) {
+        if (
+          active.data.current?.type === "note" &&
+          over.data.current?.type === "collection"
+        ) {
+          console.log("over.id => ", over.id);
           await addNoteToCollection(over.id, active.id);
           toast("Added to collection");
-        } catch (error) {
-          console.log(error);
         }
       }
+    } catch (error) {
+      toast(error.message);
     }
   }
   return (
