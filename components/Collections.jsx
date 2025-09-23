@@ -28,7 +28,7 @@ function Collections({ collections, notes, setNotes }) {
 
   return (
     // <DndContext onDragEnd={handleDragEnd}>
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 my-8 w-full">
+    <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-6 my-8 w-full">
       {collections.map((collection) => (
         <Droppable id={collection._id} key={collection._id}>
           <Collection collection={collection} type="collection" />
