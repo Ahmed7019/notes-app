@@ -28,7 +28,7 @@ function AddNewCollection() {
             Add new collection <PlusIcon />
           </Button>
         </DialogTrigger>
-        <DialogContent className="sm:max-w-[425px]">
+        <DialogContent className="w-full max-w-xs sm:max-w-md md:max-w-lg">
           <DialogHeader>
             <DialogTitle>Collection title</DialogTitle>
             <DialogDescription>
@@ -39,7 +39,12 @@ function AddNewCollection() {
             <div className="grid gap-4">
               <div className="grid gap-3">
                 <Label htmlFor="title">Title</Label>
-                <Input id="title" name="title" defaultValue="new note..." />
+                <Input
+                  id="title"
+                  name="title"
+                  defaultValue="new note..."
+                  className="w-full"
+                />
               </div>
               <div className="grid gap-3">
                 <Label htmlFor="description">Description</Label>
@@ -47,6 +52,7 @@ function AddNewCollection() {
                   id="description"
                   name="description"
                   placeholder="what about this description"
+                  className="w-full"
                 />
               </div>
             </div>

@@ -28,14 +28,16 @@ export default function Main({ notes, collections }) {
   }
   return (
     <DndContext onDragEnd={handleDragEnd}>
-      <main className="flex flex-col gap-10 ">
-        <div className="flex justify-between my-8 gap-2  sm:w-[900px]">
-          <div className="flex-grow flex-8/12">
+      <main className="flex flex-col gap-6 w-full max-w-5xl px-2 sm:px-4 md:px-8 mx-auto">
+        <div className="flex flex-col-reverse sm:flex-row justify-between my-4 gap-2 w-full sm:items-start items-center">
+          <div className="flex-grow flex justify-center items-center w-full">
             <Notes notes={notes} />
           </div>
-          <AddNewNote />
+          <div className="flex-shrink-0 flex-1 w-full sm:w-auto mb-4 sm:mb-0 flex justify-center">
+            <AddNewNote />
+          </div>
         </div>
-        <div className="flex justify-between gap-2 ">
+        <div className="flex flex-col sm:flex-row justify-between gap-2 w-full">
           <div>
             <Collections collections={collections} />
           </div>

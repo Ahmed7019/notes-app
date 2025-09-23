@@ -29,11 +29,16 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </head>
       <body
-        className={`bg-neutral-100/80 ${geistSans.variable} ${geistMono.variable} ${indie_Flower.className} antialiased flex flex-col items-center justify-center`}
+        className={`bg-neutral-100/80 ${geistSans.variable} ${geistMono.variable} ${indie_Flower.className} antialiased min-h-screen flex flex-col`}
       >
         <Navigation />
-        {children}
+        <main className="flex-1 w-full flex flex-col items-center px-2 sm:px-4 md:px-8">
+          {children}
+        </main>
         <Toaster />
         <CustomCursor />
       </body>

@@ -16,7 +16,7 @@ export default function Navigation() {
     },
   ];
   return (
-    <nav className="flex items-center gap-2 p-4 w-full  justify-center">
+    <nav className="flex items-center gap-2 p-4 w-full justify-center bg-white/80 shadow-sm sticky top-0 z-20">
       {links.map((link) => (
         <Link
           href={link.url}

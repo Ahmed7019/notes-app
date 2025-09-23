@@ -22,6 +22,7 @@ export function Draggable(props) {
       {...listeners}
       {...attributes}
       className={`active:cursor-grabbing ${isDragging ? "opacity-50" : ""}`}
+      aria-describedby={props.id}
     >
       {props.children}
     </div>

@@ -23,7 +23,7 @@ function CollectionNote({ notes }) {
   if (!notes || notes.length === 0) return <p>No notes to show </p>;
   return (
     <>
-      <div className="grid grid-cols-4 gap-2">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2">
         {notes.map((note) => (
           <Dialog key={note._id}>
             <DialogTrigger asChild>
@@ -46,7 +46,7 @@ function CollectionNote({ notes }) {
                 </CardContent>
               </Card>
             </DialogTrigger>
-            <DialogContent className="sm:w-[800px] z-100 absolute left-[25%] top-[20%]  bg-neutral-50 p-8 shadow-2xl border rounded-lg max-h-screen scroll-mr-8  overflow-y-auto">
+            <DialogContent className="w-full max-w-[95vw] sm:max-w-xl md:max-w-2xl z-100 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-neutral-50 p-4 sm:p-8 shadow-2xl border rounded-lg max-h-screen overflow-y-auto">
               <DialogHeader className={"flex items-center mb-4"}>
                 <DialogTitle>{note.title}</DialogTitle>
               </DialogHeader>
@@ -105,7 +105,7 @@ function CollectionNote({ notes }) {
                         name="text"
                         defaultValue={note.text}
                         className={
-                          "min-h-80 w-[700px] border-none focus-visible:ring-0 shadow leading-relaxed font-semibold text-lg"
+                          "min-h-40 w-full sm:w-[400px] border-none focus-visible:ring-0 shadow leading-relaxed font-semibold text-lg"
                         }
                       />
                     </div>

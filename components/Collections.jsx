@@ -28,7 +28,7 @@ function Collections({ collections, notes, setNotes }) {
 
   return (
     // <DndContext onDragEnd={handleDragEnd}>
-    <div className="grid grid-cols-4 gap-10 my-8">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 my-8 w-full">
       {collections.map((collection) => (
         <Droppable id={collection._id} key={collection._id}>
           <Collection collection={collection} type="collection" />
@@ -66,7 +66,7 @@ function Collection({ collection }) {
           </div>
         </DialogTrigger>
       </Droppable>
-      <DialogContent className="!max-w-[80rem] !max-h-[90vh] bg-neutral-50 overflow-y-auto">
+      <DialogContent className="!w-full !max-w-[95vw] sm:!max-w-2xl md:!max-w-5xl !max-h-[90vh] bg-neutral-50 overflow-y-auto">
         <DialogHeader className={"mb-4"}>
           <DialogTitle>{collection.title}</DialogTitle>
           <DialogDescription>{collection.description}</DialogDescription>
