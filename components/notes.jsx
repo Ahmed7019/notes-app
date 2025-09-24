@@ -31,16 +31,18 @@ function Notes({ notes }) {
               <DialogTrigger asChild>
                 <Card
                   className={
-                    "max-w-md hover:ring hover:ring-yellow-900 bg-yellow-50"
+                    "lg:w-[200px] md:w-[100px] md:h-[100px] hover:ring hover:ring-yellow-900 bg-yellow-50"
                   }
                 >
                   <CardHeader>
-                    <CardTitle className="font-semibold text-lg tracking-tight truncate">
+                    <CardTitle className="font-semibold md:text-sm text-lg tracking-tight truncate">
                       {note.title}
                     </CardTitle>
                   </CardHeader>
-                  <CardContent className={"text-sm text-accent-foreground"}>
-                    <p>
+                  <CardContent
+                    className={"text-sm md:text-xs text-accent-foreground "}
+                  >
+                    <p className="truncate">
                       {note.text.length >= 20
                         ? note.text.slice(0, 20) + "..."
                         : note.text}
