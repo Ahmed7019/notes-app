@@ -11,23 +11,7 @@ import {
 import { Droppable } from "./Droppable";
 import CollectionNote from "./CollectionNote";
 function Collections({ collections, notes, setNotes }) {
-  const handleDragEnd = (event) => {
-    const { isOver, active, over } = event;
-    console.log(active);
-    if (over && over.id.startsWith("collection-")) {
-      // active.id is the note id
-      const collectionId = over.id.replace("collection-", "");
-
-      setNotes((prev) =>
-        prev.map((note) =>
-          note.id === active.id ? { ...note, collectionId } : note
-        )
-      );
-    }
-  };
-
   return (
-    // <DndContext onDragEnd={handleDragEnd}>
     <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-6 my-8 w-full">
       {collections.map((collection) => (
         <Droppable id={collection._id} key={collection._id}>
@@ -66,7 +50,7 @@ function Collection({ collection }) {
           </div>
         </DialogTrigger>
       </Droppable>
-      <DialogContent className="!w-full !max-w-[95vw] sm:!max-w-2xl md:!max-w-5xl !max-h-[90vh] bg-neutral-50 overflow-y-auto">
+      <DialogContent className=" md:max-w-5xl h-fit bg-neutral-50 overflow-y-auto ">
         <DialogHeader className={"mb-4"}>
           <DialogTitle>{collection.title}</DialogTitle>
           <DialogDescription>{collection.description}</DialogDescription>

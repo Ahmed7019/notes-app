@@ -23,13 +23,13 @@ function CollectionNote({ notes }) {
   if (!notes || notes.length === 0) return <p>No notes to show </p>;
   return (
     <>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2">
+      <div className="grid grid-cols-1 sm:grid-cols-4 md:grid-cols-4 gap-2">
         {notes.map((note) => (
           <Dialog key={note._id}>
             <DialogTrigger asChild>
               <Card
                 className={
-                  "max-w-xs hover:ring hover:ring-yellow-900 bg-yellow-50"
+                  "max-w-xs h-[200px] hover:ring hover:ring-yellow-900 bg-yellow-50"
                 }
               >
                 <CardHeader>
@@ -46,15 +46,15 @@ function CollectionNote({ notes }) {
                 </CardContent>
               </Card>
             </DialogTrigger>
-            <DialogContent className="w-full max-w-[95vw] sm:max-w-xl md:max-w-2xl z-100 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-neutral-50 p-4 sm:p-8 shadow-2xl border rounded-lg max-h-screen overflow-y-auto">
+            <DialogContent className=" h-fit max-w-xl md: w-3xl p-4 sm:p-8 shadow-2xl border rounded-lg  overflow-y-auto  flex flex-col items-center">
               <DialogHeader className={"flex items-center mb-4"}>
                 <DialogTitle>{note.title}</DialogTitle>
               </DialogHeader>
 
               {/* This is the popover settings button for the notes */}
-              <div className="flex justify-center items-center">
+              <div className="relative flex justify-center items-center">
                 <div
-                  className="absolute top-4 right-4"
+                  className="absolute top-0 right-0"
                   aria-description="settings-of-note"
                   title="options"
                 >
@@ -94,7 +94,7 @@ function CollectionNote({ notes }) {
                         name="title"
                         defaultValue={note.title}
                         className={
-                          " border-b-2 max-w-[400px] focus-visible:ring-0"
+                          "border-b-2 w-full max-w-[400px] focus-visible:ring-0"
                         }
                       />
                     </div>
@@ -105,7 +105,7 @@ function CollectionNote({ notes }) {
                         name="text"
                         defaultValue={note.text}
                         className={
-                          "min-h-40 w-full sm:w-[400px] border-none focus-visible:ring-0 shadow leading-relaxed font-semibold text-lg"
+                          "min-h-40 w-full max-w-[400px] border-none focus-visible:ring-0 shadow leading-relaxed font-semibold text-lg"
                         }
                       />
                     </div>

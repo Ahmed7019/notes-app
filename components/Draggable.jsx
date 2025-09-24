@@ -16,15 +16,20 @@ export function Draggable(props) {
     : undefined;
 
   return (
-    <div
-      ref={setNodeRef}
-      style={style}
-      {...listeners}
-      {...attributes}
-      className={`active:cursor-grabbing ${isDragging ? "opacity-50" : ""}`}
-      aria-describedby={props.id}
-    >
-      {props.children}
+    <div className="relative" ref={setNodeRef} style={style}>
+      <div
+        className={`active:cursor-grabbing ${isDragging ? "opacity-50" : ""}`}
+        aria-describedby={props.id}
+      >
+        {props.children}
+      </div>
+      <div
+        {...listeners}
+        {...attributes}
+        className="absolute top-1 right-1 cursor-grab p-1 text-neutral-500"
+      >
+        ⠿
+      </div>
     </div>
   );
 }
