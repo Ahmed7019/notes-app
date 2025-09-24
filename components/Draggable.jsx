@@ -19,11 +19,11 @@ export function Draggable(props) {
     <div className="relative" ref={setNodeRef} style={style}>
       <div
         className={`active:cursor-grabbing ${isDragging ? "opacity-50" : ""}`}
-        aria-describedby={props.id}
       >
         {props.children}
       </div>
       <div
+        aria-describedby={props.id}
         {...listeners}
         {...attributes}
         className="absolute top-1 right-1 cursor-grab p-1 text-neutral-500"

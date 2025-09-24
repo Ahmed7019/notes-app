@@ -3,11 +3,33 @@ import Notes from "@/components/notes";
 import AddNewNote from "@/components/addNewNote";
 import Collections from "@/components/Collections";
 import AddNewCollection from "@/components/addNewCollection";
-import { DndContext } from "@dnd-kit/core";
+import {
+  DndContext,
+  useSensor,
+  useSensors,
+  TouchSensor,
+  MouseSensor,
+} from "@dnd-kit/core";
 import { addNoteToCollection } from "@/actions/updateCollection";
 import { toast } from "sonner";
 
 export default function Main({ notes, collections }) {
+  // Initialize sensors
+  const mouseSensor = useSensor(MouseSensor, {
+    activationConstraint: {
+      distance: 5, // pixels to move before drag starts
+    },
+  });
+
+  const touchSensor = useSensor(TouchSensor, {
+    activationConstraint: {
+      delay: 150, // ms before drag starts
+      tolerance: 5, // finger move tolerance
+    },
+  });
+
+  const sensors = useSensors(mouseSensor, touchSensor);
+
   async function handleDragEnd(event) {
     const { active, over } = event;
 
@@ -27,7 +49,7 @@ export default function Main({ notes, collections }) {
     }
   }
   return (
-    <DndContext onDragEnd={handleDragEnd}>
+    <DndContext sensors={sensors} onDragEnd={handleDragEnd}>
       <main className="flex flex-col gap-6 w-full max-w-5xl px-2 sm:px-4 md:px-8 mx-auto">
         <div className="flex flex-col-reverse sm:flex-row justify-between my-4 gap-2 w-full sm:items-start items-center">
           <div className="flex-grow flex justify-center items-center w-full">
