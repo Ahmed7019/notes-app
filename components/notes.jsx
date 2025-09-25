@@ -17,8 +17,13 @@ import { useTransition } from "react";
 import { updateNoteAction } from "@/actions/actions";
 import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 import { Draggable } from "./Draggable";
+import { deleteNote } from "@/lib/notes";
 
 function Notes({ notes }) {
+  const handleDelete = async (id) => {
+    await deleteNote(id);
+  };
+
   const [isPending, startTransition] = useTransition();
 
   if (!notes || notes.length === 0) return <p>No notes to show </p>;
@@ -31,7 +36,7 @@ function Notes({ notes }) {
               <DialogTrigger asChild>
                 <Card
                   className={
-                    "lg:w-[200px] md:w-[100px] md:h-[100px] hover:ring hover:ring-yellow-900 bg-yellow-50"
+                    "lg:w-[150px] md:w-[100px] md:h-[100px] hover:ring hover:ring-yellow-900 bg-yellow-50"
                   }
                 >
                   <CardHeader>
@@ -71,16 +76,14 @@ function Notes({ notes }) {
                       </Button>
                     </PopoverTrigger>
                     <PopoverContent className={"z-100"}>
-                      <div className="flex flex-col items-center gap-2">
-                        <Button>Add to collection</Button>
-                        <Button
-                          className={
-                            "text-red-500 bg-accent hover:bg-neutral-200 border shadow-inner"
-                          }
-                        >
-                          Delete
-                        </Button>
-                      </div>
+                      <Button
+                        onClick={(note) => handleDelete(note._id)}
+                        className={
+                          "text-neutral-100 text-lg w-full bg-red-500 hover:bg-red-400 border shadow-inner"
+                        }
+                      >
+                        Delete
+                      </Button>
                     </PopoverContent>
                   </Popover>
                 </div>
